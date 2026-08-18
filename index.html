@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teleportan</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-panel">
+        <button class="butt" id="butt-turn">
+            Turn
+        </button>
+        <p class="card-title" id="current-day" style="font-size: 20px; margin-left: 20px; margin-right: 0px; width: 120px; text-align: left;"></p>
+        <div id="inbox-news-butts-container" style="margin-top: -5px; margin-left: 160px; width: 220px; padding: 0; height: 102px; display: flex; flex-direction: column;">
+            <button class="butt" id="butt-open-inbox" style="width: 200px; height: 34px; font-size: 20px; padding: 0; border-radius: 7px;">
+                Inbox ▼
+            </button>
+            <button class="butt" id="butt-open-news" style="width: 200px; height: 34px; font-size: 20px; padding: 0; border-radius: 7px;">
+                Open news ▼
+            </button>
+        </div>
+
+        <p class="card-title" id="balance" style="font-size: 18px; margin-left: auto;"></p>
+        <p class="card-title" id="portfolio-cost" style="font-size: 18px; margin-left: 20px;"></p>
+        <!-- <button class="butt" id="dev-update" style="width: 200px; margin-left: auto;">
+            Update screen
+        </button> -->
+        <div style="margin-left: 10px;">
+
+        </div>
+        <button class="butt" id="butt-open-settings" style="width: 150px; height: 50px; font-size: 20px; padding: 0; border-radius: 1000000px;">
+            Settings
+        </button>
+    </div>
+    <div class="main-screen-container">
+        <div class="stock-list-container">
+            <select class="stock-filter" id="stock-filter">
+                <option class="stock-filter-option" value="all">All</option>
+                <option class="stock-filter-option" value="my-shares">My shares</option>
+                <option class="stock-filter-option" value="following">Following</option>
+            </select>
+            <ul class="stock-list" id="stock-list"></ul>
+        </div>
+        <div class="central-wrapper" id="central-stock" style="display: block;">
+            <div class="central-info">
+                <div style="display: flex; flex-direction: row; gap: 10px; width: 100%;">
+                    <div class="img-container" id="selected-img-container" style="margin: 0px;">
+                        <img class="stock-image" id="selected-img"></img>
+                    </div>
+                    <p class="card-title" id="selected-title" style="margin: 12px; font-size: 32px;"></p>
+                    <p class="card-price" id="selected-price" style="margin: 10px; margin-left: auto; font-size: 32px;"></p>
+                </div>
+                <div style="display: flex; flex-direction: row; gap: 10px; width: 100%;">
+                    <p class="card-title" id="selected-desc" style="margin: 10px; font-size: 22px; margin-left: 2px;"></p>
+                    <p class="card-price" id="selected-change" style="margin: 10px; margin-left: auto; font-size: 26px;">+3.14%</p>
+                </div>
+                <p class="card-title" id="selected-industry" style="font-size: 18px; color: var(--gray-color); margin: 0px 0px 3px 3px; text-align: left;"></p>
+                <div style="display: flex; flex-direction: row; gap: 10px; width: 100%;">
+                    <div class="img-container" id="selected-img-container" style="width: 32px; height: 32px;">
+                        <img src="assets/stack_icon5.png" style="width: 32px; height: 32px; "></img>
+                    </div>
+                    <p class="stock-counter" id="selected-stock-counter" style="margin: auto 0; font-size: 22px;"></p>
+                    <select class="stock-filter" id="graph-time" style="height: 40px; width: 200px; margin-left: auto;">
+                        <option class="stock-filter-option" value="30">30 D</option>
+                        <option class="stock-filter-option" value="90">90 D</option>
+                        <option class="stock-filter-option" value="365">365 D</option>
+                    </select>
+                </div>
+            </div>
+            <div class="graph-wrapper">
+                <canvas id="graph"></canvas>
+            </div>
+            <div style="display: flex; flex-direction: row; gap: 10px; width: 100%;">
+            </div>
+            <div style="display: flex; flex-direction: column; height: 22%; padding-left: 10px;">
+                <p id="selected-dividend" style="font-size: 16px; color: var(--gray-color); margin-top: 10px; margin-bottom: 0;"></p>
+                <p id="selected-dividay" style="font-size: 16px; color: var(--gray-color); margin: 0; margin-top: 10px;">Next dividend payment: Day 67</p>
+                <div style="display: flex; flex-direction: row; justify-content: space-between; width: 100%; margin-top: auto;">
+                    <p id="total-shares" style="font-size: 16px; color: var(--gray-color);"></p>
+                    <p id="mkt-cap" style="font-size: 16px; color: var(--gray-color);"></p>
+                    <p id="52w-high" style="font-size: 16px; color: var(--gray-color);"></p>
+                    <p id="52w-low" style="font-size: 16px; color: var(--gray-color);"></p>
+                </div>
+            </div>
+        </div>
+        <div class="central-wrapper" id="central-news" style="display: none; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; margin-bottom: 20px;">
+                <button class="butt" id="butt-back-to-market" style="width: 220px; margin-left: 14px;">
+                    ◀ Back to market
+                </button>
+                <select class="stock-filter" id="news-filter" style="height: 50px; width: 150px; margin-left: 10px;">
+                    <option class="stock-filter-option" value="all">All</option>
+                    <option class="stock-filter-option" value="following">Following</option>
+                </select>
+            </div>
+            <div class="stock-list-container" style="width: 100%;">
+                <ul class="stock-list" id="news-list"></ul>
+            </div>
+            <div class="stock-list-container" style="width: 100%; display: none;">
+                <ul class="stock-list" id="inbox-list"></ul>
+            </div>
+        </div>
+        <div class = "buy-sell-panel">
+            <button class="butt2" id="butt-buy">
+                Buy
+            </button>
+            <button class="butt2" id="butt-sell">
+                Sell
+            </button>
+            <div style="display: flex; flex-direction: row; width: calc(90% + 10px); margin: 0 10px 0px 0px;">
+                <p class="card-title" style="text-align: left; font-size: 20px; margin: 0; margin-left: 10px; margin-top: 10px;">Quantity</p>
+                <button class="butt" id="max-quantity" style="padding: 0; height: 30px; width: 60px; border-radius: 7px;font-size: 18px; margin: 8px 0px 0px auto; border: none;">
+                    max.
+                </button>
+            </div>
+            <input class="input-quantity" id="input-quantity" value="1"></input>
+            <p class="card-title" id = "trade-total" style="text-align: left; font-size: 20px; margin: 0; margin-left: 10px; margin-top: 10px;"></p>
+            <button class="butt" id="butt-confirm-trade" style="width: 95%; margin-top: 30px;"></button>
+            <button class="butt2" id="butt-follow" style="width: 95%; margin: 10px;"></button>
+        </div>
+    </div>
+    <div id="popup-overlay" class="popup-overlay">
+        <div class="popup" id="popup">
+            <div style="display: flex; flex-direction: row; height: 40px; margin-bottom: 20px;">
+                <p style="font-size: 20px; border-bottom: 3px solid var(--light-color); width: 200px; padding-bottom: 5px; margin: 0; margin-top: auto;">Settings</p>
+                <button class="butt" id="butt-close-settings" style="margin: 0; margin-left: auto; width: 150px; height: 40px; padding: 0; margin-right: 0;">
+                    Close
+                </button>
+            </div>
+            <label class="checkbox">
+                <input type="checkbox" id="checkbox-animations">
+                <p style="font-size: 20px;">Animations</p>
+            </label>
+            <p style="font-size: 20px"></p>
+            <div style="display: flex; flex-direction: row;">
+                <button class="butt" id="dev-restart" style="margin-left: 0; height: 50px; width: 200px; padding: 0;">
+                    Reset progress
+                </button>
+                <!-- <p style="font-size: 20px; color: var(--gray-color);">Warning: lohman</p> -->
+            </div>
+            <p style="font-size: 18px; color: var(--gray-color); margin-top: 20px; margin-bottom: 5px;">Player name:</p>
+            <input class="input-quantity" id="input-player-name" value="Carb TobretLif" style="width: 50%; margin: 0;"></input>
+            <p style="font-size: 18px; color: var(--gray-color);">Keyboard shortucts:<br>Escape - close menu<br>O - open settings</p>
+
+        </div>
+    </div>
+    <script src="constants.js"></script>
+    <script src="stockman.js"></script>
+    <script src="news.js"></script>
+    <script src="inbox.js"></script>
+    <script src="graph.js"></script>
+    <script src="main.js"></script>
+    <script src="dev.js"></script>
+</body>
+</html>
