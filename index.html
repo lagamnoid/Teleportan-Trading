@@ -128,21 +128,22 @@
                     Close
                 </button>
             </div>
-            <label class="checkbox">
-                <input type="checkbox" id="checkbox-animations">
-                <p style="font-size: 20px;">Animations</p>
-            </label>
-            <p style="font-size: 20px"></p>
-            <div style="display: flex; flex-direction: row;">
-                <button class="butt" id="dev-restart" style="margin-left: 0; height: 50px; width: 200px; padding: 0;">
-                    Reset progress
-                </button>
-                <!-- <p style="font-size: 20px; color: var(--gray-color);">Warning: lohman</p> -->
+            <div style="display: flex; flex-direction: column;">
+                <p style="font-size: 18px; color: var(--gray-color); margin-top: 0px; margin-bottom: 5px;">Player name:</p>
+                <input class="input-quantity" id="input-player-name" value="Carb TobretLif" style="width: 50%; margin: 0;"></input>
+                <label class="checkbox">
+                    <input type="checkbox" id="checkbox-animations">
+                    <p style="font-size: 20px;">Animations</p>
+                </label>
+                <!-- <p style="font-size: 20px"></p> -->
+                <p style="font-size: 18px; color: var(--gray-color); margin-top: 0; margin-left: 3px;">Keyboard shortucts:<br>Escape - close menu<br>O - open settings<br>N - open news<br> I - open inbox<br> J/K - select next/previous card</p>
+                <div style="display: flex; flex-direction: row; margin-top: auto; position: absolute; bottom: 10;">
+                    <button class="butt" id="dev-restart" style="margin-left: 0; height: 50px; width: 200px; padding: 0;">
+                        Reset progress
+                    </button>
+                    <!-- <p style="font-size: 20px; color: var(--gray-color);">Warning: lohman</p> -->
+                </div>
             </div>
-            <p style="font-size: 18px; color: var(--gray-color); margin-top: 20px; margin-bottom: 5px;">Player name:</p>
-            <input class="input-quantity" id="input-player-name" value="Carb TobretLif" style="width: 50%; margin: 0;"></input>
-            <p style="font-size: 18px; color: var(--gray-color);">Keyboard shortucts:<br>Escape - close menu<br>O - open settings</p>
-
         </div>
     </div>
     <script src="constants.js"></script>

@@ -309,8 +309,8 @@ button, select {
     color: var(--light-color);
     padding: 10px;
     border-radius: 10px;
-    width: 40%;
-    height: 40%;
+    width: 50%;
+    height: 50%;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 10000;
@@ -352,11 +352,11 @@ button, select {
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid #94a3b8;
+    border: 2px solid var(--light-color);
     border-radius: 50%;
     outline: none;
     cursor: pointer;
-    display: grid;
+    /* display: grid; */
     place-content: center;
     transition: all 0.1s ease-in-out;
     background-color: var(--dark-color);
@@ -371,8 +371,8 @@ button, select {
     content: "";
     width: 10px;
     height: 6px;
-    /* border-left: 2px solid #fff;
-    border-bottom: 2px solid #fff; */
+    /* border-left: 2px solid #fff; */
+    /* border-bottom: 2px solid #fff; */
     transform: rotate(-45deg) scale(0);
     transition: transform 0.1s ease-in-out;
     margin-top: -2px;
